@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انفوجرافيك: الاستدامة البيئية في رؤية مصر 2030</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <!--
+        Infographic Plan:
+        1.  Header: Title and introduction.
+        2.  Section 1: What is Environmental Sustainability? Core concept.
+        3.  Section 2: Vision 2030's Pillars. Highlighting the Environmental pillar.
+        4.  Section 3: Key Projects & Achievements (Data Visualization).
+            -   Renewable Energy (Big Numbers).
+            -   Water Management (Bar Chart).
+            -   Climate Goals (Donut Chart).
+        5.  Section 4: The Framework. A flowchart showing the process from Vision to Action.
+        6.  Section 5: Challenges & Opportunities.
+        7.  Footer: Concluding message.
+
+        Color Palette Selection: "Brilliant Blues" & Greens for a professional, environmental theme.
+        HEX Codes: #005F73 (Dark Teal), #0A9396 (Teal), #94D2BD (Light Teal), #EE9B00 (Accent Orange).
+
+        Visualization Choices:
+        -   Water Plants Capacity: Goal=Compare, Viz=Bar Chart, Lib=Chart.js. Justification: Best for direct comparison of quantitative values. (NO SVG)
+        -   GHG Reduction Goal: Goal=Inform (Part-to-whole), Viz=Donut Chart, Lib=Chart.js. Justification: Clearly shows a percentage goal. (NO SVG)
+        -   Big Numbers (Energy, etc.): Goal=Inform, Viz=Large text + Icon, Method=HTML/Tailwind. Justification: High impact for single key metrics. (NO SVG)
+        -   Vision-to-Action Flow: Goal=Organize (Process), Viz=Flowchart, Method=HTML/Tailwind. Justification: Shows relationships and process flow clearly. (NO SVG, NO MERMAID JS)
+
+        Constraint Confirmation: NEITHER Mermaid JS NOR SVG were used in this output. All visuals are rendered via Canvas (Chart.js) or styled HTML/CSS with Unicode characters.
+    -->
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #005F73;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #0A9396;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+        }
+        .kpi-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #EE9B00;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .kpi-icon {
+            font-size: 3.5rem;
+            color: #005F73;
+            margin-bottom: 1rem;
+        }
+        .kpi-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #CA6702;
+        }
+        .kpi-label {
+            font-size: 1.1rem;
+            color: #0A9396;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800" dir="rtl">
+
+    <header class="bg-gradient-to-b from-[#005F73] to-[#0A9396] text-white text-center py-20 px-4">
+        <h1 class="text-4xl md:text-6xl font-black mb-4">الاستدامة البيئية في قلب رؤية مصر 2030</h1>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-200">
+            رحلة مصر نحو مستقبل أخضر: كيف تترجم الأهداف الطموحة إلى واقع ملموس يحمي مواردنا الطبيعية ويضمن حقوق الأجيال القادمة.
+        </p>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+
+        <section id="what-is-sustainability" class="mb-20">
+            <h2 class="section-title">ما هي الاستدامة البيئية؟</h2>
+            <p class="section-subtitle">
+                هي القدرة على تلبية احتياجات الحاضر دون التضحية بقدرة أجيال المستقبل على تلبية احتياجاتهم. إنها معادلة متوازنة بين النمو الاقتصادي، العدالة الاجتماعية، وحماية بيئتنا.
+            </p>
+            <div class="bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto text-center border-t-4 border-[#0A9396]">
+                <p class="text-2xl font-bold text-[#005F73] mb-2">لماذا هي ضرورة لمصر؟</p>
+                <p class="text-lg text-gray-600">
+                    في مواجهة تحديات مثل ندرة المياه والضغط السكاني المتزايد، لم تعد الاستدامة خيارًا بل أصبحت ضرورة حتمية لضمان أمن مصر المائي والغذائي والبيئي.
+                </p>
+            </div>
+        </section>
+        
+        <section id="vision-pillars" class="mb-20">
+            <h2 class="section-title">محور البيئة في رؤية 2030</h2>
+            <p class="section-subtitle">
+                تضع رؤية مصر 2030 البعد البيئي كركيزة أساسية لتحقيق التنمية المستدامة، بهدف تحسين جودة الحياة وتطوير بنية تحتية صديقة للبيئة.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="p-6 text-center bg-white rounded-lg shadow-md border-b-4 border-gray-300">
+                    <p class="text-5xl mb-4">📈</p>
+                    <h3 class="text-2xl font-bold text-gray-700">المحور الاقتصادي</h3>
+                </div>
+                <div class="p-6 text-center bg-white rounded-lg shadow-xl border-b-4 border-[#EE9B00] transform scale-105">
+                     <p class="text-5xl mb-4">🌍</p>
+                    <h3 class="text-2xl font-bold text-[#005F73]">المحور البيئي</h3>
+                </div>
+                <div class="p-6 text-center bg-white rounded-lg shadow-md border-b-4 border-gray-300">
+                     <p class="text-5xl mb-4">👨‍👩‍👧‍👦</p>
+                    <h3 class="text-2xl font-bold text-gray-700">المحور المجتمعي</h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="key-projects" class="mb-20 text-center">
+             <h2 class="section-title">إنجازات ومشاريع رائدة</h2>
+             <p class="section-subtitle">
+                أرقام تتحدث عن نفسها، وتعكس حجم الجهد المبذول لتحويل الرؤية إلى حقيقة على أرض الواقع.
+             </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+                <div class="kpi-card">
+                    <div class="kpi-icon">🌬️</div>
+                    <div class="kpi-number">2.8</div>
+                    <div class="kpi-label">جيجاوات من طاقة الرياح</div>
+                    <p class="text-sm text-gray-500 mt-2">مصر ضمن أكبر 20 دولة منتجة للكهرباء من الرياح عالميًا.</p>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">⚛️</div>
+                    <div class="kpi-number">قيد التنفيذ</div>
+                    <div class="kpi-label">مشروع الضبعة النووي</div>
+                    <p class="text-sm text-gray-500 mt-2">خطوة استراتيجية لتنويع مصادر الطاقة النظيفة.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-[#005F73] mb-4 text-center">عمالقة معالجة المياه</h3>
+                    <p class="text-gray-600 mb-6 text-center">مشاريع استراتيجية لإعادة استخدام مياه الصرف الزراعي ومواجهة شح المياه.</p>
+                    <div class="chart-container">
+                        <canvas id="waterPlantsChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-[#005F73] mb-4 text-center">الالتزام المناخي</h3>
+                     <p class="text-gray-600 mb-6 text-center">هدف طموح لخفض الانبعاثات بحلول 2030 تماشيًا مع اتفاقية باريس للمناخ.</p>
+                    <div class="chart-container">
+                        <canvas id="emissionsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="framework" class="mb-20">
+            <h2 class="section-title">من الرؤية إلى التنفيذ</h2>
+            <p class="section-subtitle">
+                مسار واضح يربط بين الأهداف الاستراتيجية، التشريعات الداعمة، والمبادرات الفعالة على الأرض لضمان تحقيق الاستدامة.
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                <div class="bg-[#94D2BD] text-[#005F73] p-4 rounded-lg shadow-md font-bold text-lg w-full md:w-auto">رؤية 2030</div>
+                <div class="text-4xl text-[#0A9396] font-thin transform md:-rotate-0">➔</div>
+                <div class="bg-white p-4 rounded-lg shadow-md w-full md:w-auto">
+                    <h4 class="font-bold text-[#005F73]">تشريعات والتزامات</h4>
+                    <p class="text-sm text-gray-600">حماية البيئة، خفض التلوث، اتفاقيات دولية</p>
+                </div>
+                <div class="text-4xl text-[#0A9396] font-thin transform md:-rotate-0">➔</div>
+                <div class="bg-white p-4 rounded-lg shadow-md w-full md:w-auto">
+                    <h4 class="font-bold text-[#005F73]">مشاريع ومبادرات</h4>
+                    <p class="text-sm text-gray-600">طاقة متجددة، معالجة مياه، حياة كريمة</p>
+                </div>
+                <div class="text-4xl text-[#0A9396] font-thin transform md:-rotate-0">➔</div>
+                 <div class="bg-[#EE9B00] text-white p-4 rounded-lg shadow-md font-bold text-lg w-full md:w-auto">مستقبل مستدام</div>
+            </div>
+        </section>
+
+         <section id="challenges-opportunities" class="mb-20">
+            <h2 class="section-title">الطريق إلى المستقبل</h2>
+            <p class="section-subtitle">
+                نظرة متوازنة على العقبات التي نواجهها والفرص الواعدة التي تفتح آفاقًا جديدة للنمو الأخضر.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
+                    <h3 class="text-2xl font-bold text-red-800 mb-3 flex items-center"><span class="text-3xl ml-2">⚠️</span>التحديات</h3>
+                    <ul class="list-disc list-inside text-red-700 space-y-2">
+                        <li>التلوث الناتج عن الصناعات</li>
+                        <li>النمو السكاني السريع والضغط على الموارد</li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                    <h3 class="text-2xl font-bold text-green-800 mb-3 flex items-center"><span class="text-3xl ml-2">💡</span>الفرص</h3>
+                    <ul class="list-disc list-inside text-green-700 space-y-2">
+                        <li>الاستثمار في التكنولوجيا الخضراء</li>
+                        <li>الشراكات الدولية لتبادل الخبرات والتمويل</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#005F73] text-white text-center py-10 px-4">
+        <h3 class="text-2xl font-bold mb-2">مصر: نموذج إقليمي رائد في التنمية المستدامة</h3>
+        <p class="max-w-2xl mx-auto text-gray-300">
+           من خلال الالتزام برؤية 2030، تمضي مصر قدمًا نحو تحقيق مستقبل لا يكون فيه النمو الاقتصادي على حساب بيئتنا الثمينة.
+        </p>
+    </footer>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const wrapLabel = (label, maxWidth) => {
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            });
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const waterPlantsCtx = document.getElementById('waterPlantsChart').getContext('2d');
+            new Chart(waterPlantsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['محطة بحر البقر', 'محطة الدلتا الجديدة'],
+                    datasets: [{
+                        label: 'السعة (مليون م³/يوم)',
+                        data: [5.6, 7.5],
+                        backgroundColor: ['#0A9396', '#94D2BD'],
+                        borderColor: ['#005F73', '#0A9396'],
+                        borderWidth: 2,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: tooltipTitleCallback
+                            },
+                            rtl: true,
+                            bodyFont: { family: 'Cairo' },
+                            titleFont: { family: 'Cairo' }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'مليون متر مكعب / يوم',
+                                font: {
+                                    family: 'Cairo',
+                                    size: 14,
+                                    weight: 'bold'
+                                },
+                                color: '#005F73'
+                            },
+                             ticks: { color: '#0A9396' }
+                        },
+                        x: {
+                             ticks: {
+                                color: '#005F73',
+                                font: {
+                                     family: 'Cairo',
+                                     size: 14,
+                                     weight: 'bold'
+                                }
+                             }
+                        }
+                    }
+                }
+            });
+
+            const emissionsCtx = document.getElementById('emissionsChart').getContext('2d');
+            new Chart(emissionsCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['نسبة الخفض المستهدفة', 'الانبعاثات المتبقية'],
+                    datasets: [{
+                        data: [22, 78],
+                        backgroundColor: ['#EE9B00', '#D3D3D3'],
+                        borderColor: ['#FFFFFF', '#FFFFFF'],
+                        borderWidth: 4,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    family: 'Cairo',
+                                    size: 14,
+                                },
+                                color: '#005F73'
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: tooltipTitleCallback,
+                                label: function(context) {
+                                    return `${context.label}: ${context.raw}%`;
+                                }
+                            },
+                             rtl: true,
+                             bodyFont: { family: 'Cairo' },
+                             titleFont: { family: 'Cairo' }
+                        },
+                         title: {
+                            display: true,
+                            text: 'هدف خفض الانبعاثات بحلول 2030',
+                            font: { family: 'Cairo', size: 16, weight: 'bold'},
+                            color: '#005F73',
+                            padding: { bottom: 20 }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
